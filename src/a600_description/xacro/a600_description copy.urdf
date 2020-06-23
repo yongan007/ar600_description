@@ -1,0 +1,680 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot
+  name="a600_description">
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="-0.0014901 0.13851 0.00071357"
+        rpy="0 0 0" />
+      <mass
+        value="28.386" />
+      <inertia
+        ixx="0.073017"
+        ixy="-3.603E-05"
+        ixz="5.7649E-06"
+        iyy="0.085864"
+        iyz="0.0040898"
+        izz="0.10252" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://a600_description/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.52941 0.54902 0.54902 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://a600_description/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="R_HipR">
+    <inertial>
+      <origin
+        xyz="0.00071161 -0.027458 -0.023065"
+        rpy="0 0 0" />
+      <mass
+        value="2.3558" />
+      <inertia
+        ixx="0.0032395"
+        ixy="1.8675E-05"
+        ixz="-4.6222E-05"
+        iyy="0.0032177"
+        iyz="7.5574E-06"
+        izz="0.0025538" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://a600_description/meshes/R_HipR.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.52941 0.54902 0.54902 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://a600_description/meshes/R_HipR.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="R_HipR"
+    type="continuous">
+    <origin
+      xyz="-0.088 -0.027645 0"
+      rpy="1.5708 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="R_HipR" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+  <link
+    name="R_HipS">
+    <inertial>
+      <origin
+        xyz="0.0032793 0.00011106 0.025957"
+        rpy="0 0 0" />
+      <mass
+        value="6.15" />
+      <inertia
+        ixx="0.0051093"
+        ixy="1.2709E-05"
+        ixz="7.1765E-06"
+        iyy="0.0048779"
+        iyz="-5.4798E-06"
+        izz="0.0062721" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://a600_description/meshes/R_HipS.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.52941 0.54902 0.54902 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://a600_description/meshes/R_HipS.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="R_HipS"
+    type="continuous">
+    <origin
+      xyz="0 -0.102 0"
+      rpy="3.1416 0 3.1416" />
+    <parent
+      link="R_HipR" />
+    <child
+      link="R_HipS" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <link
+    name="R_Knee_Upper">
+    <inertial>
+      <origin
+        xyz="0.018772 -0.22402 -0.0063916"
+        rpy="0 0 0" />
+      <mass
+        value="16.331" />
+      <inertia
+        ixx="0.048034"
+        ixy="2.0407E-07"
+        ixz="-6.8084E-05"
+        iyy="0.015142"
+        iyz="-0.00213"
+        izz="0.039371" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://a600_description/meshes/R_Knee_Upper.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.52941 0.54902 0.54902 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://a600_description/meshes/R_Knee_Upper.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="R_Knee_Upper"
+    type="continuous">
+    <origin
+      xyz="0 0 0"
+      rpy="0 0 0" />
+    <parent
+      link="R_HipS" />
+    <child
+      link="R_Knee_Upper" />
+    <axis
+      xyz="1 0 0" />
+  </joint>
+  <link
+    name="R_Knee_Lower">
+    <inertial>
+      <origin
+        xyz="-0.011938 -0.17383 0.0029031"
+        rpy="0 0 0" />
+      <mass
+        value="10.03" />
+      <inertia
+        ixx="0.020389"
+        ixy="3.5365E-08"
+        ixz="-9.649E-07"
+        iyy="0.0072632"
+        iyz="8.7687E-05"
+        izz="0.015199" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://a600_description/meshes/R_Knee_Lower.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.52941 0.54902 0.54902 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://a600_description/meshes/R_Knee_Lower.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="R_Knee_Lower"
+    type="continuous">
+    <origin
+      xyz="0 -0.28 0"
+      rpy="3.1416 0 3.1416" />
+    <parent
+      link="R_Knee_Upper" />
+    <child
+      link="R_Knee_Lower" />
+    <axis
+      xyz="1 0 0" />
+  </joint>
+  <link
+    name="R_FootR">
+    <inertial>
+      <origin
+        xyz="-0.00069157 0.029306 0.012871"
+        rpy="0 0 0" />
+      <mass
+        value="1.1565" />
+      <inertia
+        ixx="0.00063348"
+        ixy="-6.7285E-07"
+        ixz="-4.078E-08"
+        iyy="0.00057147"
+        iyz="-3.7116E-06"
+        izz="0.0003019" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://a600_description/meshes/R_FootR.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.52941 0.54902 0.54902 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://a600_description/meshes/R_FootR.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="R_FootR"
+    type="continuous">
+    <origin
+      xyz="0 -0.27682 0.010063"
+      rpy="3.1053 -0.00039391 -0.010836" />
+    <parent
+      link="R_Knee_Lower" />
+    <child
+      link="R_FootR" />
+    <axis
+      xyz="0.99994 -0.010843 0" />
+  </joint>
+  <link
+    name="R_FootS">
+    <inertial>
+      <origin
+        xyz="-6.0221E-05 0.080294 -0.056863"
+        rpy="0 0 0" />
+      <mass
+        value="11.269" />
+      <inertia
+        ixx="0.02985"
+        ixy="-1.1479E-05"
+        ixz="7.8243E-06"
+        iyy="0.03455"
+        iyz="0.00043103"
+        izz="0.0088348" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://a600_description/meshes/R_FootS.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.52941 0.54902 0.54902 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://a600_description/meshes/R_FootS.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="R_FootS"
+    type="continuous">
+    <origin
+      xyz="-0.00032467 0.030005 0"
+      rpy="0 0 0" />
+    <parent
+      link="R_FootR" />
+    <child
+      link="R_FootS" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <link
+    name="L_HipR">
+    <inertial>
+      <origin
+        xyz="-0.00070201 -0.027248 -0.022799"
+        rpy="0 0 0" />
+      <mass
+        value="2.388" />
+      <inertia
+        ixx="0.00324"
+        ixy="-1.8675E-05"
+        ixz="4.6222E-05"
+        iyy="0.003218"
+        iyz="7.5574E-06"
+        izz="0.0025543" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://a600_description/meshes/L_HipR.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.52941 0.54902 0.54902 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://a600_description/meshes/L_HipR.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="L_HipR"
+    type="continuous">
+    <origin
+      xyz="0.088 -0.027645 0"
+      rpy="1.5708 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="L_HipR" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+  <link
+    name="L_HipS">
+    <inertial>
+      <origin
+        xyz="0.0033351 0.00011632 -0.025364"
+        rpy="0 0 0" />
+      <mass
+        value="6.15" />
+      <inertia
+        ixx="0.005105"
+        ixy="1.2895E-05"
+        ixz="1.554E-07"
+        iyy="0.0048687"
+        iyz="1.0129E-05"
+        izz="0.006262" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://a600_description/meshes/L_HipS.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.52941 0.54902 0.54902 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://a600_description/meshes/L_HipS.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="L_HipS"
+    type="continuous">
+    <origin
+      xyz="0 -0.102 0"
+      rpy="0 0 0" />
+    <parent
+      link="L_HipR" />
+    <child
+      link="L_HipS" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <link
+    name="L_Knee_upper">
+    <inertial>
+      <origin
+        xyz="0.018739 -0.22354 0.0087895"
+        rpy="0 0 0" />
+      <mass
+        value="16.528" />
+      <inertia
+        ixx="0.048222"
+        ixy="4.2459E-06"
+        ixz="6.2369E-05"
+        iyy="0.015119"
+        iyz="0.002184"
+        izz="0.039943" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://a600_description/meshes/L_Knee_upper.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.52941 0.54902 0.54902 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://a600_description/meshes/L_Knee_upper.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="L_Knee_upper"
+    type="continuous">
+    <origin
+      xyz="0 0 0"
+      rpy="0 0 0" />
+    <parent
+      link="L_HipS" />
+    <child
+      link="L_Knee_upper" />
+    <axis
+      xyz="1 0 0" />
+  </joint>
+  <link
+    name="L_Knee_Lower">
+    <inertial>
+      <origin
+        xyz="0.011812 -0.16731 -0.0034716"
+        rpy="0 0 0" />
+      <mass
+        value="10.498" />
+      <inertia
+        ixx="0.021077"
+        ixy="-1.0082E-06"
+        ixz="-1.8986E-06"
+        iyy="0.007636"
+        iyz="-0.00016695"
+        izz="0.01553" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://a600_description/meshes/L_Knee_Lower.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.52941 0.54902 0.54902 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://a600_description/meshes/L_Knee_Lower.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="L_Knee_Lower"
+    type="continuous">
+    <origin
+      xyz="0 -0.28 0"
+      rpy="-0.036336 0 0" />
+    <parent
+      link="L_Knee_upper" />
+    <child
+      link="L_Knee_Lower" />
+    <axis
+      xyz="1 0 0" />
+  </joint>
+  <link
+    name="L_FootR">
+    <inertial>
+      <origin
+        xyz="0.00060836 0.029292 0.012871"
+        rpy="0 0 0" />
+      <mass
+        value="1.1565" />
+      <inertia
+        ixx="0.00063348"
+        ixy="-6.7285E-07"
+        ixz="-4.078E-08"
+        iyy="0.00057147"
+        iyz="-3.7116E-06"
+        izz="0.0003019" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://a600_description/meshes/L_FootR.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.52941 0.54902 0.54902 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://a600_description/meshes/L_FootR.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="L_FootR"
+    type="continuous">
+    <origin
+      xyz="0 -0.277 0"
+      rpy="3.1416 0 -0.010843" />
+    <parent
+      link="L_Knee_Lower" />
+    <child
+      link="L_FootR" />
+    <axis
+      xyz="0.99994 -0.010843 0" />
+  </joint>
+  <link
+    name="L_FootS">
+    <inertial>
+      <origin
+        xyz="-6.0221E-05 0.080294 -0.056863"
+        rpy="0 0 0" />
+      <mass
+        value="11.269" />
+      <inertia
+        ixx="0.02985"
+        ixy="-1.1479E-05"
+        ixz="7.8243E-06"
+        iyy="0.03455"
+        iyz="0.00043103"
+        izz="0.0088348" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://a600_description/meshes/L_FootS.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.52941 0.54902 0.54902 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://a600_description/meshes/L_FootS.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="L_FootS"
+    type="continuous">
+    <origin
+      xyz="0.00097526 0.029991 0"
+      rpy="0 0 0" />
+    <parent
+      link="L_FootR" />
+    <child
+      link="L_FootS" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+</robot>
