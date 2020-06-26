@@ -25,6 +25,32 @@
     </link>
   </xacro:macro>
 
+   <!-- Link description -->
+  <xacro:macro name="link_stl_box" params="name color origin_xyz origin_rpy box_size mass ixx ixy ixz iyy iyz izz">
+    <link name="${name}">
+      <inertial>
+        <mass value="${mass}" />
+        <origin rpy="${origin_rpy}" xyz="${origin_xyz}" />
+        <inertia ixx="${ixx}" ixy="${ixy}" ixz="${ixz}" iyy="${iyy}" iyz="${iyz}" izz="${izz}" />
+      </inertial>
+      <collision>
+        <origin rpy="0 0 0" xyz="0 0 0" />
+          <geometry>
+          <box size="${box_size}"/>
+            <!-- <mesh filename="package://a600_description/meshes/${name}.STL" /> -->
+          </geometry>
+      </collision>
+      <visual>
+        <origin rpy="0 0 0" xyz="0 0 0" />
+        <geometry>
+            <mesh filename="package://a600_description/meshes/${name}.STL" />
+        </geometry>
+          <material name="${color}"/>
+      </visual>
+    </link>
+  </xacro:macro>
+
+
  <!-- Joint description -->
   <xacro:macro name="revolute_joint" params="name type axis_xyz origin_rpy origin_xyz parent child limit_e limit_l limit_u limit_v">
     <joint name="${name}" type="${type}">
