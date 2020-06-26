@@ -1,120 +1,69 @@
 # controller_joint_names: ['', 'R_HipR', 'R_HipS', 'R_Knee_Upper', 'R_Knee_Lower', 'R_FootR', 'R_FootS', 'L_HipR', 'L_HipS', 'L_Knee_upper', 'L_Knee_Lower', 'L_FootR', 'L_FootS', ]
 
- /a600/gazebo_ros_control:   
-  pid_gains:
-    R_HipR:
-      p: 100.0
-      i: 0.01 
-      d: 10.0
-    R_HipS:
-      p: 100.0
-      i: 0.01 
-      d: 10.0
-    R_Knee_Upper:
-      p: 100.0
-      i: 0.01 
-      d: 10.0
-    R_Knee_Lower:
-      p: 100.0
-      i: 0.01 
-      d: 10.0      
-    R_FootR:
-      p: 100.0
-      i: 0.01 
-      d: 10.0
-    R_FootS:
-      p: 100.0
-      i: 0.01 
-      d: 10.0    
+a600:
+  # Publish all joint states -----------------------------------
+  joint_state_controller:
+    type: joint_state_controller/JointStateController
+    publish_rate: 250  
 
-    L_HipR:
-      p: 100.0
-      i: 0.01 
-      d: 10.0
-    L_HipS:
-      p: 100.0
-      i: 0.01 
-      d: 10.0
-    L_Knee_upper:
-      p: 100.0
-      i: 0.01 
-      d: 10.0
-    L_Knee_Lower:
-      p: 100.0
-      i: 0.01 
-      d: 10.0      
-    L_FootR:
-      p: 100.0
-      i: 0.01 
-      d: 10.0
-    L_FootS:
-      p: 100.0
-      i: 0.01 
-      d: 10.0 
+  # Position Controllers ---------------------------------------
+  joint1_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: R_HipR
+    pid: {p: 100.0, i: 0.01, d: 0.001}
 
+  joint2_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: R_HipS
+    pid: {p: 100.0, i: 0.01, d: 0.001}
 
-# a600:
-#   # Publish all joint states -----------------------------------
-#   joint_state_controller:
-#     type: joint_state_controller/JointStateController
-#     publish_rate: 250  
-
-#   # Position Controllers ---------------------------------------
-#   joint1_position_controller:
-#     type: position_controllers/JointPositionController
-#     joint: R_HipR
-#     pid: {p: 100.0, i: 0.01, d: 10.0}
-
-#   joint2_position_controller:
-#     type: position_controllers/JointPositionController
-#     joint: R_HipS
-#     pid: {p: 100.0, i: 0.01, d: 10.0}
-
-#   joint3_position_controller:
-#     type: position_controllers/JointPositionController
-#     joint: R_Knee_Upper
-#     pid: {p: 10.0, i: 0.1, d: 30.0}
-#   joint4_position_controller:
-#     type: position_controllers/JointPositionController
-#     joint: R_Knee_Lower
-#     pid: {p: 100.0, i: 0.01, d: 10.0}
+  joint3_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: R_Knee_Upper
+    pid: {p: 10.0, i: 0.1, d: 0.001}
+  joint4_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: R_Knee_Lower
+    pid: {p: 100.0, i: 0.01, d: 0.001}
   
-#   joint5_position_controller:
-#     type: position_controllers/JointPositionController
-#     joint: R_FootR
-#     pid: {p: 100.0, i: 0.01, d: 30.0}
-#   joint6_position_controller:
-#     type: position_controllers/JointPositionController
-#     joint: R_FootS
-#     pid: {p: 100.0, i: 0.01, d: 30.0}
+  joint5_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: R_FootR
+    pid: {p: 100.0, i: 0.01, d: 0.001}
+  joint6_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: R_FootS
+    pid: {p: 100.0, i: 0.01, d: 0.001}
 
-#   joint7_position_controller:
-#     type: position_controllers/JointPositionController
-#     joint: L_HipR
-#     pid: {p: 100.0, i: 0.01, d: 10.0}
-#   joint8_position_controller:
-#     type: position_controllers/JointPositionController
-#     joint: L_HipS
-#     pid: {p: 100.0, i: 0.01, d: 10.0}
+  joint7_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: L_HipR
+    pid: {p: 100.0, i: 0.01, d: 0.001}
+  joint8_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: L_HipS
+    pid: {p: 100.0, i: 0.01, d: 0.001}
 
-#   joint9_position_controller:
-#     type: position_controllers/JointPositionController
-#     joint: L_Knee_upper
-#     pid: {p: 100.0, i: 0.01, d: 10.0}
-#   joint10_position_controller:
-#     type: position_controllers/JointPositionController
-#     joint: L_Knee_Lower
-#     pid: {p: 100.0, i: 0.01, d: 10.0}
+  joint9_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: L_Knee_upper
+    pid: {p: 100.0, i: 0.01, d: 0.001}
+  joint10_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: L_Knee_Lower
+    pid: {p: 100.0, i: 0.01, d: 0.001}
   
-#   joint11_position_controller:
-#     type: position_controllers/JointPositionController
-#     joint: L_FootR
-#     pid: {p: 100.0, i: 0.01, d: 10.0}
+  joint11_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: L_FootR
+    pid: {p: 100.0, i: 0.01, d: 0.001}
 
-#   joint12_position_controller:
-#     type: position_controllers/JointPositionController
-#     joint: L_FootS
-#     pid: {p: 100.0, i: 0.01, d: 10.0}
+  joint12_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: L_FootS
+    pid: {p: 100.0, i: 0.01, d: 0.001}
+
+
 
 
 

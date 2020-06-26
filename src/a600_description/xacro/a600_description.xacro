@@ -10,7 +10,7 @@
 <xacro:property name="PI" value="3.1415926535897931"/>
 <xacro:property name="lower_angle" value="-1.04719755"/>    
 <xacro:property name="upper_angle" value="1.04719755"/> 
-<xacro:property name="effort" value="1000"/>   
+<xacro:property name="effort" value="10000"/>   
 <xacro:property name="angular_velocity" value="0.5"/>     
 
 

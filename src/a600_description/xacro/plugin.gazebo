@@ -7,8 +7,7 @@
         <robotNamespace>/a600</robotNamespace> 
       </plugin>
   </gazebo>
-
-
+  
 <!-- define color in model -->
 
   <gazebo reference="base_link">

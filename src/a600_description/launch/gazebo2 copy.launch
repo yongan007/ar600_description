@@ -1,8 +1,16 @@
 <?xml version="1.0"?>
 <launch>
 
+  <!-- Robot pose -->
+	<arg name="x" default="0"/>
+	<arg name="y" default="0"/>
+	<arg name="z" default="0"/>
+	<arg name="roll" default="0"/>
+	<arg name="pitch" default="0"/>
+	<arg name="yaw" default="0"/>
+
 	<include file="$(find gazebo_ros)/launch/empty_world.launch">
-	<arg name="world_name" value="$(find a600_description)/launch/low_gravity.world"/>
+	<!-- <arg name="world_name" value="$(find a600_description)/launch/low_gravity.world"/> -->
 	</include>
 
   <!-- Robot model -->
@@ -14,10 +22,10 @@
 			pkg="gazebo_ros" 
 			type="spawn_model" 
 			respawn="false"
-			args="-urdf -model a600 -param robot_description -z 1 ">
+			args="-urdf -model a600 -param robot_description -z 0.83">
 	</node>
 
-<!-- -z 0.83 -->
+
 	<rosparam command="load" file="$(find a600_description)/config/gazebo_controller.yaml"/> 
 	
  <node name="contoller_spawner"  pkg="controller_manager"  type="spawner"  respawn="false"
@@ -28,8 +36,6 @@
 					joint7_position_controller joint8_position_controller
 					joint9_position_controller joint10_position_controller 
           joint11_position_controller joint12_position_controller" />  
-
-<node name="talker" pkg="control" type="control.py" />
 
 </launch>
 		   
