@@ -12,13 +12,13 @@
       <collision>
         <origin rpy="0 0 0" xyz="0 0 0" />
           <geometry>
-            <mesh filename="package://a600_description/meshes/${name}.STL" />
+            <mesh filename="package://a600_description/meshes_light/${name}.STL" />
           </geometry>
       </collision>
       <visual>
         <origin rpy="0 0 0" xyz="0 0 0" />
         <geometry>
-            <mesh filename="package://a600_description/meshes/${name}.STL" />
+            <mesh filename="package://a600_description/meshes_light/${name}.STL" />
         </geometry>
           <material name="${color}"/>
       </visual>
@@ -43,7 +43,7 @@
       <visual>
         <origin rpy="0 0 0" xyz="0 0 0" />
         <geometry>
-            <mesh filename="package://a600_description/meshes/${name}.STL" />
+            <mesh filename="package://a600_description/meshes_light/${name}.STL" />
         </geometry>
           <material name="${color}"/>
       </visual>

@@ -10,58 +10,58 @@ a600:
   joint1_position_controller:
     type: effort_controllers/JointPositionController
     joint: R_HipR
-    pid: {p: 100.0, i: 0.01, d: 0.001}
+    pid: {p: 8000.0, i: 3.5, d: 0.0}
 
   joint2_position_controller:
     type: effort_controllers/JointPositionController
     joint: R_HipS
-    pid: {p: 100.0, i: 0.01, d: 0.001}
+    pid: {p: 8000.0, i: 3.5, d: 0.0}
 
   joint3_position_controller:
     type: effort_controllers/JointPositionController
-    joint: R_Knee_Upper
-    pid: {p: 10.0, i: 0.1, d: 0.001}
+    joint: R_HipF
+    pid: {p: 8000.0, i: 3.5, d: 0.0}
   joint4_position_controller:
     type: effort_controllers/JointPositionController
-    joint: R_Knee_Lower
-    pid: {p: 100.0, i: 0.01, d: 0.001}
+    joint: R_Knee
+    pid: {p: 8000.0, i: 3.5, d: 0.0}
   
   joint5_position_controller:
     type: effort_controllers/JointPositionController
-    joint: R_FootR
-    pid: {p: 100.0, i: 0.01, d: 0.001}
+    joint: R_FootF
+    pid: {p: 8000.0, i: 3.5, d: 0.0}
   joint6_position_controller:
     type: effort_controllers/JointPositionController
     joint: R_FootS
-    pid: {p: 100.0, i: 0.01, d: 0.001}
+    pid: {p: 8000.0, i: 3.5, d: 0.0}
 
   joint7_position_controller:
     type: effort_controllers/JointPositionController
     joint: L_HipR
-    pid: {p: 100.0, i: 0.01, d: 0.001}
+    pid: {p: 8000.0, i: 3.5, d: 0.0}
   joint8_position_controller:
     type: effort_controllers/JointPositionController
     joint: L_HipS
-    pid: {p: 100.0, i: 0.01, d: 0.001}
+    pid: {p: 8000.0, i: 3.5, d: 0.0}
 
   joint9_position_controller:
     type: effort_controllers/JointPositionController
-    joint: L_Knee_upper
-    pid: {p: 100.0, i: 0.01, d: 0.001}
+    joint: L_HipF
+    pid: {p: 8000.0, i: 3.5, d: 0.0}
   joint10_position_controller:
     type: effort_controllers/JointPositionController
-    joint: L_Knee_Lower
-    pid: {p: 100.0, i: 0.01, d: 0.001}
+    joint: L_Knee
+    pid: {p: 8000.0, i: 3.5, d: 0.0}
   
   joint11_position_controller:
     type: effort_controllers/JointPositionController
-    joint: L_FootR
-    pid: {p: 100.0, i: 0.01, d: 0.001}
+    joint: L_FootF
+    pid: {p: 8000.0, i: 3.5, d: 0.0}
 
   joint12_position_controller:
     type: effort_controllers/JointPositionController
     joint: L_FootS
-    pid: {p: 100.0, i: 0.01, d: 0.001}
+    pid: {p: 8000.0, i: 3.5, d: 0.0}
 
 
 

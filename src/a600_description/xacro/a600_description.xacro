@@ -10,9 +10,14 @@
 <xacro:property name="PI" value="3.1415926535897931"/>
 <xacro:property name="lower_angle" value="-1.04719755"/>    
 <xacro:property name="upper_angle" value="1.04719755"/> 
-<xacro:property name="effort" value="10000"/>   
-<xacro:property name="angular_velocity" value="0.5"/>     
+<xacro:property name="angular_velocity" value="0.5"/> 
 
+<xacro:property name="HipR_max_effort" value="60"/>      
+<xacro:property name="HipS_max_effort" value="250"/>      
+<xacro:property name="HipF_max_effort" value="220"/>      
+<xacro:property name="Knee_max_effort" value="220"/>      
+<xacro:property name="FootF_max_effort" value="220"/>      
+<xacro:property name="FootS_max_effort" value="10000"/> 
 
 
 <!-- <link name="dummy">
@@ -48,7 +53,7 @@
 <revolute_joint name="R_HipR" type="revolute"
         origin_rpy="1.5708 0 0" origin_xyz="-0.088 -0.027645 0"
         parent="base_link" child="R_HipR"
-        limit_e="${effort}" limit_l="${lower_angle}" limit_u="${upper_angle}" limit_v="${angular_velocity}" 
+        limit_e="${HipR_max_effort}" limit_l="${lower_angle}" limit_u="${upper_angle}" limit_v="${angular_velocity}" 
         axis_xyz="0 1 0" />
 
 <link_stl name="R_HipS"
@@ -67,7 +72,7 @@
         origin_xyz="0 -0.102 0"
         origin_rpy="3.1416 0 3.1416"
         parent="R_HipR" child="R_HipS"
-        limit_e="${effort}" limit_l="${lower_angle}" limit_u="${upper_angle}" limit_v="${angular_velocity}" 
+        limit_e="${HipS_max_effort}" limit_l="${lower_angle}" limit_u="${upper_angle}" limit_v="${angular_velocity}" 
         axis_xyz="0 0 1" />
 
 <link_stl name="R_Knee_Upper"
@@ -82,11 +87,11 @@
         izz="0.039371"
         color = 'orange' />
 
-<revolute_joint name="R_Knee_Upper" type="revolute"
+<revolute_joint name="R_HipF" type="revolute"
       origin_xyz="0 0 0"
       origin_rpy="0 0 0"
         parent="R_HipS" child="R_Knee_Upper"
-        limit_e="${effort}" limit_l="${lower_angle}" limit_u="${upper_angle}" limit_v="${angular_velocity}" 
+        limit_e="${HipF_max_effort}" limit_l="${lower_angle}" limit_u="${upper_angle}" limit_v="${angular_velocity}" 
         axis_xyz="1 0 0" />
 
 <link_stl name="R_Knee_Lower"
@@ -101,11 +106,11 @@
         izz="0.015199"
         color = 'orange' />
 
-<revolute_joint name="R_Knee_Lower" type="revolute"
+<revolute_joint name="R_Knee" type="revolute"
       origin_xyz="0 -0.28 0"
       origin_rpy="3.1416 0 3.1416"
         parent="R_Knee_Upper" child="R_Knee_Lower"
-        limit_e="${effort}" limit_l="${lower_angle}" limit_u="${upper_angle}" limit_v="${angular_velocity}" 
+        limit_e="${Knee_max_effort}" limit_l="${lower_angle}" limit_u="${upper_angle}" limit_v="${angular_velocity}" 
         axis_xyz="1 0 0" />
 
 <link_stl name="R_FootR"
@@ -120,11 +125,11 @@
         izz="0.0003019"
         color = 'orange' />
 
-<revolute_joint name="R_FootR" type="revolute"
+<revolute_joint name="R_FootF" type="revolute"
       origin_xyz="0 -0.27682 0.010063"
       origin_rpy="3.1053 -0.00039391 -0.010836"
         parent="R_Knee_Lower" child="R_FootR"
-        limit_e="${effort}" limit_l="${lower_angle}" limit_u="${upper_angle}" limit_v="${angular_velocity}" 
+        limit_e="${FootF_max_effort}" limit_l="${lower_angle}" limit_u="${upper_angle}" limit_v="${angular_velocity}" 
         axis_xyz="0.99994 -0.010843 0"   />
 
 <link_stl name="R_FootS"
@@ -143,7 +148,7 @@
       origin_xyz="-0.00032467 0.030005 0"
       origin_rpy="0 0 0" 
         parent="R_FootR" child="R_FootS"
-        limit_e="${effort}" limit_l="${lower_angle}" limit_u="${upper_angle}" limit_v="${angular_velocity}" 
+        limit_e="${FootS_max_effort}" limit_l="${lower_angle}" limit_u="${upper_angle}" limit_v="${angular_velocity}" 
         axis_xyz="0 0 1"  />
 
 <!-- Left Leg -->
@@ -163,7 +168,7 @@
       origin_xyz="0.088 -0.027645 0"
       origin_rpy="1.5708 0 0" 
         parent="base_link" child="L_HipR"
-        limit_e="${effort}" limit_l="${lower_angle}" limit_u="${upper_angle}" limit_v="${angular_velocity}" 
+        limit_e="${HipR_max_effort}" limit_l="${lower_angle}" limit_u="${upper_angle}" limit_v="${angular_velocity}" 
         axis_xyz="0 1 0"  />
 
 <link_stl name="L_HipS"
@@ -182,7 +187,7 @@
       origin_xyz="0 -0.102 0"
       origin_rpy="0 0 0"
         parent="L_HipR" child="L_HipS"
-        limit_e="${effort}" limit_l="${lower_angle}" limit_u="${upper_angle}" limit_v="${angular_velocity}" 
+        limit_e="${HipS_max_effort}" limit_l="${lower_angle}" limit_u="${upper_angle}" limit_v="${angular_velocity}" 
         axis_xyz="0 0 1"  />
 
 <link_stl name="L_Knee_upper"
@@ -197,11 +202,11 @@
         izz="0.039943"
         color = 'orange' />
 
-<revolute_joint name="L_Knee_upper" type="revolute"
+<revolute_joint name="L_HipF" type="revolute"
       origin_xyz="0 0 0"
       origin_rpy="0 0 0"
         parent="L_HipS" child="L_Knee_upper"
-        limit_e="${effort}" limit_l="${lower_angle}" limit_u="${upper_angle}" limit_v="${angular_velocity}" 
+        limit_e="${HipF_max_effort}" limit_l="${lower_angle}" limit_u="${upper_angle}" limit_v="${angular_velocity}" 
         axis_xyz="1 0 0"  />
 
 
@@ -217,11 +222,11 @@
         izz="0.01553"
         color = 'orange' />
 
-<revolute_joint name="L_Knee_Lower" type="revolute"
+<revolute_joint name="L_Knee" type="revolute"
       origin_xyz="0 -0.28 0"
       origin_rpy="-0.036336 0 0" 
         parent="L_Knee_upper" child="L_Knee_Lower"
-        limit_e="${effort}" limit_l="${lower_angle}" limit_u="${upper_angle}" limit_v="${angular_velocity}" 
+        limit_e="${Knee_max_effort}" limit_l="${lower_angle}" limit_u="${upper_angle}" limit_v="${angular_velocity}" 
         axis_xyz="1 0 0"  />
 
 <link_stl name="L_FootR"
@@ -236,11 +241,11 @@
         izz="0.0003019"
         color = 'orange' />
 
-<revolute_joint name="L_FootR" type="revolute"
+<revolute_joint name="L_FootF" type="revolute"
       origin_xyz="0 -0.277 0"
       origin_rpy="3.1416 0 -0.010843"
         parent="L_Knee_Lower" child="L_FootR"
-        limit_e="${effort}" limit_l="${lower_angle}" limit_u="${upper_angle}" limit_v="${angular_velocity}" 
+        limit_e="${FootF_max_effort}" limit_l="${lower_angle}" limit_u="${upper_angle}" limit_v="${angular_velocity}" 
         axis_xyz="0.99994 -0.010843 0"  />
 
 <link_stl name="L_FootS"
@@ -259,7 +264,7 @@
       origin_xyz="0.00097526 0.029991 0"
       origin_rpy="0 0 0" 
         parent="L_FootR" child="L_FootS"
-        limit_e="${effort}" limit_l="${lower_angle}" limit_u="${upper_angle}" limit_v="${angular_velocity}" 
+        limit_e="${FootS_max_effort}" limit_l="${lower_angle}" limit_u="${upper_angle}" limit_v="${angular_velocity}" 
         axis_xyz="0 0 1"  />
 
 </robot>
