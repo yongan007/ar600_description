@@ -29,7 +29,7 @@
 					joint9_position_controller joint10_position_controller 
           joint11_position_controller joint12_position_controller" />  
 
-<node name="talker" pkg="control" type="control.py" />
+<!-- <node name="talker" pkg="control" type="control.py" /> -->
 
 </launch>
 		   
