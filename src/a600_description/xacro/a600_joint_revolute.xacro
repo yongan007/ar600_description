@@ -44,7 +44,7 @@
         joint_damping ="${leg_joint_damping}"  joint_friction ="${leg_joint_friction}"
         axis_xyz="0 1 0" />
 
-<fixed_joint name="R_HipS" 
+<revolute_joint name="R_HipS" 
         origin_xyz="0 -0.102 0"
         origin_rpy="3.1416 0 3.1416"
         parent="R_HipR" child="R_HipS"
@@ -52,7 +52,7 @@
         joint_damping ="${leg_joint_damping}"  joint_friction ="${leg_joint_friction}"
         axis_xyz="0 0 1" />
 
-<fixed_joint name="R_HipF"    
+<revolute_joint name="R_HipF"    
         origin_xyz="0 0 0"
         origin_rpy="0 0 0"
         parent="R_HipS" child="R_Knee_Upper"
@@ -60,7 +60,7 @@
         joint_damping ="${leg_joint_damping}"  joint_friction ="${leg_joint_friction}"
         axis_xyz="1 0 0" />
 
-<fixed_joint name="R_Knee"    
+<revolute_joint name="R_Knee"    
         origin_xyz="0 -0.28 0"
         origin_rpy="3.1416 0 3.1416"
         parent="R_Knee_Upper" child="R_Knee_Lower"
@@ -68,7 +68,7 @@
         joint_damping ="${leg_joint_damping}"  joint_friction ="${leg_joint_friction}"
         axis_xyz="1 0 0" />
 
-<fixed_joint name="R_FootF"    
+<revolute_joint name="R_FootF"    
         origin_xyz="0 -0.277 0.0"
         origin_rpy="3.1416 0 0"
         parent="R_Knee_Lower" child="R_FootR"
@@ -76,7 +76,7 @@
         joint_damping ="${leg_joint_damping}"  joint_friction ="${leg_joint_friction}"
         axis_xyz="1 0 0"   />
 
-<fixed_joint name="R_FootS"    
+<revolute_joint name="R_FootS"    
         origin_xyz="0 0.030 0"
         origin_rpy="0 0 0" 
         parent="R_FootR" child="R_FootS"
@@ -85,7 +85,7 @@
         axis_xyz="0 0 1"  />
 
 <!--Left leg -->
-<fixed_joint name="L_HipR"    
+<revolute_joint name="L_HipR"    
         origin_xyz="0.088 -0.027645 0"
         origin_rpy="1.5708 0 0" 
         parent="base_link" child="L_HipR"
@@ -93,7 +93,7 @@
         joint_damping ="${leg_joint_damping}"  joint_friction ="${leg_joint_friction}"
         axis_xyz="0 1 0"  />
 
-<fixed_joint name="L_HipS"    
+<revolute_joint name="L_HipS"    
         origin_xyz="0 -0.102 0"
         origin_rpy="0 0 0"
         parent="L_HipR" child="L_HipS"
@@ -101,7 +101,7 @@
         joint_damping ="${leg_joint_damping}"  joint_friction ="${leg_joint_friction}"
         axis_xyz="0 0 1"  />
 
-<fixed_joint name="L_HipF"    
+<revolute_joint name="L_HipF"    
         origin_xyz="0 0 0"
         origin_rpy="0 0 0"
         parent="L_HipS" child="L_Knee_upper"
@@ -109,7 +109,7 @@
         joint_damping ="${leg_joint_damping}"  joint_friction ="${leg_joint_friction}"
         axis_xyz="1 0 0"  />
 
-<fixed_joint name="L_Knee"    
+<revolute_joint name="L_Knee"    
       origin_xyz="0 -0.28 0"
       origin_rpy="0 0 0" 
         parent="L_Knee_upper" child="L_Knee_Lower"
@@ -118,7 +118,7 @@
         axis_xyz="1 0 0"  />
 
 
-<fixed_joint name="L_FootF"    
+<revolute_joint name="L_FootF"    
       origin_xyz="0 -0.277 0"
       origin_rpy="3.1416 0 0"
         parent="L_Knee_Lower" child="L_FootR"
@@ -126,7 +126,7 @@
         joint_damping ="${leg_joint_damping}"  joint_friction ="${leg_joint_friction}"
         axis_xyz="1 0 0"  />
 
-<fixed_joint name="L_FootS"    
+<revolute_joint name="L_FootS"    
       origin_xyz="0.0 0.030 0"
       origin_rpy="0 0 0" 
         parent="L_FootR" child="L_FootS"
