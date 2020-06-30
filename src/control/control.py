@@ -12,30 +12,17 @@ import yaml
 import struct
 import re
 
-# def client():
-#     s = socket.socket()
-#     host = '10.91.53.160'
-#     # host = "192.168.31.146"
-#     port = 9999
-#     s.connect((host, port))
-#     while True:
-#         json_length = struct.unpack(">I", s.recv(4))[0]
-#         # now read the JSON data of the given size and JSON decode it
-#         json_data = b""  # initiate an empty bytes structure
-#         while len(json_data) < json_length:
-#             chunk = s.recv(min(4096, json_length - len(json_data)))
-#             if not chunk:  # no data, possibly broken connection/bad protocol
-#                 break  # just exit for now, you should deal with this case in production
-#             json_data += chunk
-#         payload = json.loads(json_data.decode())["slaves"][1]["position"]
-#         # print(type(payload))
-#         return payload
-# from joint_receiver import 
-
-        # return message
+from sensor_msgs.msg import JointState
+# from sensor_msgs.msg import Jo
 def talker():
     
-    rospy.init_node('talker', anonymous=True)
+    # rospy.init_node('talker', anonymous=True)
+    rospy.init_node('joint_state_publisher')
+
+    pub_rviz = rospy.Publisher("/joint_states", JointState, queue_size=10)
+    # rospy.init_node('joint_state_publisher')
+    rate = rospy.Rate(10) # 10hz
+    hello_str = JointState()
 
     pub1 = rospy.Publisher('/a600/joint1_position_controller/command', Float64, queue_size=10)
     pub2 = rospy.Publisher('/a600/joint2_position_controller/command', Float64, queue_size=10)
@@ -52,6 +39,11 @@ def talker():
     
     rate = rospy.Rate(10) # 10hz
     while not rospy.is_shutdown():
+
+        hello_str.header.stamp = rospy.Time.now()
+        # hello_str.position[0] =1
+        pub_rviz.publish(hello_str)
+
         s = socket.socket()
         host = '10.91.53.160'
         # host = "192.168.31.146"
@@ -72,7 +64,7 @@ def talker():
             position2 = data
             position3 = data
 
-            rate.sleep()
+            # rate.sleep()
 
             pub1.publish(position1)
             pub2.publish(position1)
