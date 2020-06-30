@@ -56,8 +56,8 @@
 
 
  <!-- Joint description -->
-  <xacro:macro name="revolute_joint" params="name type axis_xyz origin_rpy origin_xyz parent child limit_e limit_l limit_u limit_v joint_damping joint_friction ">
-    <joint name="${name}" type="${type}" >
+  <xacro:macro name="revolute_joint" params="name axis_xyz origin_rpy origin_xyz parent child limit_e limit_l limit_u limit_v joint_damping joint_friction ">
+    <joint name="${name}" type="revolute" >
       <axis xyz="${axis_xyz}" />
       <limit effort="${limit_e}" lower="${limit_l}" upper="${limit_u}" velocity="${limit_v}" />
       <origin rpy="${origin_rpy}" xyz="${origin_xyz}" />
@@ -77,6 +77,22 @@
         <mechanicalReduction>1</mechanicalReduction>
       </actuator>
     </transmission>
+  </xacro:macro>
+
+
+
+ <!-- Joint description -->
+  <xacro:macro name="fixed_joint" params="name axis_xyz origin_rpy origin_xyz parent child limit_e limit_l limit_u limit_v joint_damping joint_friction ">
+    <joint name="${name}" type="fixed" >
+      <axis xyz="${axis_xyz}" />
+      <limit effort="${limit_e}" lower="${limit_l}" upper="${limit_u}" velocity="${limit_v}" />
+      <origin rpy="${origin_rpy}" xyz="${origin_xyz}" />
+      <parent link="${parent}" />
+      <child link="${child}" />
+      <dynamics damping="${joint_damping}" friction="${joint_friction}" />
+    </joint>
+
+
   </xacro:macro>
 
 
