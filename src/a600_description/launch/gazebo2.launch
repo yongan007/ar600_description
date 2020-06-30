@@ -31,7 +31,7 @@
 					joint9_position_controller joint10_position_controller 
           joint11_position_controller joint12_position_controller" />  
 
-<node name="talker" pkg="control" type="control.py" />
+<!-- <node name="talker" pkg="control" type="control.py" /> -->
 
 <!-- calculate, publish and remap joint_states -->
 <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"
