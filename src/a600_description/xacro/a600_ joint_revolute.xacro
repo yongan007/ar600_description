@@ -1,0 +1,161 @@
+<?xml version="1.0" ?>
+
+<robot name="AR-600" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+<!-- Start - Include -->
+  <xacro:include filename="$(find a600_description)/xacro/links_joints_macro.xacro"/>
+  <xacro:include filename="$(find a600_description)/xacro/a600_links_description.xacro"/>
+
+
+  <xacro:include filename="$(find a600_description)/xacro/plugin.gazebo"/>
+
+  <!-- Constants value-->
+<xacro:property name="PI" value="3.1415926535897931"/>
+<xacro:property name="lower_angle" value="-1.04719755"/>    
+<xacro:property name="upper_angle" value="1.04719755"/> 
+<!-- velocity value-->
+<xacro:property name="angular_velocity_hip" value="2.5"/> 
+<xacro:property name="angular_velocity_knee" value="5.8"/> 
+<xacro:property name="angular_velocity_foot" value="3.4"/> 
+
+<!-- Efforts value-->
+<xacro:property name="HipR_max_effort" value="60.0"/>      
+<xacro:property name="HipS_max_effort" value="250.0"/>      
+<xacro:property name="HipF_max_effort" value="250.0"/>      
+<xacro:property name="Knee_max_effort" value="220.0"/>      
+<xacro:property name="FootF_max_effort" value="60.0"/>      
+<xacro:property name="FootS_max_effort" value="60.0"/> 
+<!-- Foot pid value-->
+<xacro:property name="ground_kp"  value="1000000.0" />
+<xacro:property name="ground_kd"  value="10000.0" />
+<xacro:property name="ground_mu1"  value="1.5" />
+<xacro:property name="ground_mu2"  value="1.5" />
+<!-- Friction damping value-->
+<xacro:property name="leg_joint_damping"  value="0.1" /> 
+<xacro:property name="leg_joint_friction"  value="10" /> 
+
+<!-- Joint decription-->
+
+<revolute_joint name="R_HipR" 
+        origin_rpy="1.5708 0 0" 
+        origin_xyz="-0.088 -0.027645 0"
+        parent="base_link" child="R_HipR"
+        limit_e="${HipR_max_effort}" limit_l="-0.175" limit_u="0.175" limit_v="${angular_velocity_hip}" 
+        joint_damping ="${leg_joint_damping}"  joint_friction ="${leg_joint_friction}"
+        axis_xyz="0 1 0" />
+
+<revolute_joint name="R_HipS" 
+        origin_xyz="0 -0.102 0"
+        origin_rpy="3.1416 0 3.1416"
+        parent="R_HipR" child="R_HipS"
+        limit_e="${HipS_max_effort}" limit_l="-0.192" limit_u="0.314" limit_v="${angular_velocity_hip}" 
+        joint_damping ="${leg_joint_damping}"  joint_friction ="${leg_joint_friction}"
+        axis_xyz="0 0 1" />
+
+<revolute_joint name="R_HipF"    
+        origin_xyz="0 0 0"
+        origin_rpy="0 0 0"
+        parent="R_HipS" child="R_Knee_Upper"
+        limit_e="${HipF_max_effort}" limit_l="-1.047" limit_u="0.698" limit_v="${angular_velocity_hip}" 
+        joint_damping ="${leg_joint_damping}"  joint_friction ="${leg_joint_friction}"
+        axis_xyz="1 0 0" />
+
+<revolute_joint name="R_Knee"    
+        origin_xyz="0 -0.28 0"
+        origin_rpy="3.1416 0 3.1416"
+        parent="R_Knee_Upper" child="R_Knee_Lower"
+        limit_e="${Knee_max_effort}" limit_l="-0.087" limit_u="1.571" limit_v="${angular_velocity_knee}" 
+        joint_damping ="${leg_joint_damping}"  joint_friction ="${leg_joint_friction}"
+        axis_xyz="1 0 0" />
+
+<revolute_joint name="R_FootF"    
+        origin_xyz="0 -0.277 0.0"
+        origin_rpy="3.1416 0 0"
+        parent="R_Knee_Lower" child="R_FootR"
+        limit_e="${FootF_max_effort}" limit_l="-1.047" limit_u="0.559" limit_v="${angular_velocity_foot}" 
+        joint_damping ="${leg_joint_damping}"  joint_friction ="${leg_joint_friction}"
+        axis_xyz="1 0 0"   />
+
+<revolute_joint name="R_FootS"    
+        origin_xyz="0 0.030 0"
+        origin_rpy="0 0 0" 
+        parent="R_FootR" child="R_FootS"
+        limit_e="${FootS_max_effort}" limit_l="-0.297" limit_u="0.297" limit_v="${angular_velocity_foot}" 
+        joint_damping ="${leg_joint_damping}"  joint_friction ="${leg_joint_friction}"
+        axis_xyz="0 0 1"  />
+
+<!--Left leg -->
+<revolute_joint name="L_HipR"    
+        origin_xyz="0.088 -0.027645 0"
+        origin_rpy="1.5708 0 0" 
+        parent="base_link" child="L_HipR"
+        limit_e="${HipR_max_effort}" limit_l="-0.175" limit_u="0.175" limit_v="${angular_velocity_hip}" 
+        joint_damping ="${leg_joint_damping}"  joint_friction ="${leg_joint_friction}"
+        axis_xyz="0 1 0"  />
+
+<revolute_joint name="L_HipS"    
+        origin_xyz="0 -0.102 0"
+        origin_rpy="0 0 0"
+        parent="L_HipR" child="L_HipS"
+        limit_e="${HipS_max_effort}" limit_l="-0.314" limit_u="0.192" limit_v="${angular_velocity_hip}" 
+        joint_damping ="${leg_joint_damping}"  joint_friction ="${leg_joint_friction}"
+        axis_xyz="0 0 1"  />
+
+<revolute_joint name="L_HipF"    
+        origin_xyz="0 0 0"
+        origin_rpy="0 0 0"
+        parent="L_HipS" child="L_Knee_upper"
+        limit_e="${HipF_max_effort}" limit_l="-1.047" limit_u="0.698" limit_v="${angular_velocity_hip}" 
+        joint_damping ="${leg_joint_damping}"  joint_friction ="${leg_joint_friction}"
+        axis_xyz="1 0 0"  />
+
+<revolute_joint name="L_Knee"    
+      origin_xyz="0 -0.28 0"
+      origin_rpy="0 0 0" 
+        parent="L_Knee_upper" child="L_Knee_Lower"
+        limit_e="${Knee_max_effort}" limit_l="-0.087" limit_u="1.571" limit_v="${angular_velocity_knee}" 
+        joint_damping ="${leg_joint_damping}"  joint_friction ="${leg_joint_friction}"
+        axis_xyz="1 0 0"  />
+
+
+<revolute_joint name="L_FootF"    
+      origin_xyz="0 -0.277 0"
+      origin_rpy="3.1416 0 0"
+        parent="L_Knee_Lower" child="L_FootR"
+        limit_e="${FootF_max_effort}" limit_l="-1.047" limit_u="0.559" limit_v="${angular_velocity_foot}" 
+        joint_damping ="${leg_joint_damping}"  joint_friction ="${leg_joint_friction}"
+        axis_xyz="1 0 0"  />
+
+<revolute_joint name="L_FootS"    
+      origin_xyz="0.0 0.030 0"
+      origin_rpy="0 0 0" 
+        parent="L_FootR" child="L_FootS"
+        limit_e="${FootS_max_effort}" limit_l="-0.297" limit_u="0.297" limit_v="${angular_velocity_foot}" 
+        joint_damping ="${leg_joint_damping}"  joint_friction ="${leg_joint_friction}"
+        axis_xyz="0 0 1"  />
+
+<!-- 
+<gazebo reference="L_FootS">
+<kp>${ground_kp}</kp>
+<kd>${ground_kd}</kd>
+<mu1>${ground_mu1}</mu1>
+<mu2>${ground_mu2}</mu2>
+<fdir1>1 0 0</fdir1>
+<maxVel>1.0</maxVel>
+<minDepth>0.00</minDepth>
+<maxContacts>4</maxContacts>
+</gazebo>
+
+<gazebo reference="R_FootS">
+<kp>${ground_kp}</kp>
+<kd>${ground_kd}</kd>
+<mu1>${ground_mu1}</mu1>
+<mu2>${ground_mu2}</mu2>
+<fdir1>1 0 0</fdir1>
+<maxVel>1.0</maxVel>
+<minDepth>0.00</minDepth>
+<maxContacts>4</maxContacts>
+</gazebo> -->
+
+
+</robot>
