@@ -13,40 +13,10 @@ import struct
 import re
 
 from sensor_msgs.msg import JointState
-from dynamic_reconfigure.msg import Config
-from dynamic_reconfigure.server import Server
-from dynamic_reconf_joints.cfg import DynamicConfig
-
-from dynamic_reconfigure.msg import Config
-import rospy
-from std_msgs.msg import String
-
-def callback(data):
-    global positions
-    # rospy.loginfo(rospy.get_caller_id() + "I heard %s", data.doubles)
-    msgs = data.doubles
-    # print(msgs[0].value)
-    names = [msg.name for msg in msgs]
-    positions =[round(msg.value,2) for msgs in msgs]
-    print(positions)
-
-
-def listener():
-
-    rospy.init_node('listener', anonymous=True)
-
-    rospy.Subscriber("/listener/parameter_updates", Config, callback)
-
-    rospy.spin()
-
-if __name__ == '__main__':
-    listener()
+# from sensor_msgs.msg import Jo
 def talker():
     
-    # rospy.init_node('talker', anonymous=True)
-    rospy.init_node('talker')
-
-
+    rospy.init_node('talker', anonymous=True)
     rate = rospy.Rate(10) # 10hz
 
     pub1 = rospy.Publisher('/a600/joint1_position_controller/command', Float64, queue_size=10)
@@ -63,26 +33,33 @@ def talker():
     pub12 = rospy.Publisher('/a600/joint12_position_controller/command', Float64, queue_size=10)      
     
     rate = rospy.Rate(10) # 10hz
+    while not rospy.is_shutdown():
+            
+            data =1.0
 
-    # rate.sleep()
+            position1 = data
+            position2 = data
+            position3 = data
 
-    pub1.publish(positions[0])
-    pub2.publish(positions[1])
-    pub3.publish(positions[2])
-    pub4.publish(positions[3])
-    # rate.sleep()
-    pub5.publish(positions[4])
-    pub6.publish(positions[5])
+            # rate.sleep()
 
-    pub7.publish(positions[6])
-    pub8.publish(positions[7])
-    pub9.publish(positions[8])
-    pub10.publish(positions[9])
-    pub11.publish(positions[11])
-    pub12.publish(positions[12])
+            pub1.publish(position1)
+            pub2.publish(position1)
+            pub3.publish(position1)
+            pub4.publish(position1)
+            # rate.sleep()
+            pub5.publish(position1)
+            pub6.publish(position1)
+
+            pub7.publish(position2)
+            pub8.publish(position2)
+            pub9.publish(position2)
+            pub10.publish(position2)
+            pub11.publish(position2)
+            pub12.publish(position2)
 
             
-    rate.sleep()
+            rate.sleep()
 
     # return pub5
 

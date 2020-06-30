@@ -87,9 +87,9 @@ def talker():
 
             # joint_names = [R_HipR, R_HipS, R_Knee_Upper, R_Knee_Lower, R_FootR, R_FootS, L_HipR, L_HipS, L_Knee_upper,
             # L_Knee_Lower, L_FootR, L_FootS]
-            joint_names= ['R_HipR', 'R_HipS', 'R_Knee_Upper', 'R_Knee_Lower', 
-                        'R_FootR', 'R_FootS', 'L_HipR', 'L_HipS', 
-                        'L_Knee_upper', 'L_Knee_Lower', 'L_FootR', 'L_FootS', ]
+            joint_names= ['R_HipR', 'R_HipS', 'R_HipF', 'R_Knee', 
+                        'R_FootF', 'R_FootS', 'L_HipR', 'L_HipS', 
+                        'L_HipF', 'L_Knee', 'L_FootF', 'L_FootS', ]
 
             positions = [RhipR_pos,RhipS_pos,RhipF_pos,RKnee_pos, RFootF_pos,
                         RFootS_pos,LhipR_pos, LhipS_pos,LhipF_pos,LKnee_pos,

@@ -3,7 +3,7 @@
 
   <arg    name="gui" default="True" />
 
-  <param    name="robot_description"    textfile="$(find a600_description)/urdf/a600_description.urdf" />
+  <param    name="robot_description"    textfile="$(find a600_description)/xacro/a600_description.urdf" />
   <param    name="use_gui"    value="$(arg gui)" />
 
   <node    name="joint_state_publisher"    pkg="joint_state_publisher"    type="joint_state_publisher" />
