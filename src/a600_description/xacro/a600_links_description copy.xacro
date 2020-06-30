@@ -1,0 +1,165 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+<!-- <link name="dummy">
+   </link>
+  <joint name="dummy_joint" type="fixed">
+     <parent link="dummy"/>
+     <child link="body"/>
+   </joint> -->
+     <!-- box_size = "0.1 0.1 -0.2" -->
+                
+<link_stl name="base_link"
+        origin_xyz="0.0 0.138 0.0" origin_rpy="0 0 0" 
+        mass="28.39"
+        ixx="0.07302"
+        iyy="0.08586"
+        izz="0.10252"
+        color = 'orange' />
+        <!-- collision_rpy = "0 0 0" collision_xyz = "0 0 0" -->
+<!-- Right Leg -->
+<link_stl_box name="R_HipR"
+        origin_xyz="0.0 -0.027 -0.023" origin_rpy="0 0 0"
+        collision_rpy = "0 0 0" collision_xyz = "0 0 0"
+        box_size = "0.0 0.0 0.0" 
+        mass="2.35"
+        ixx="0.00323"
+        iyy="0.00323"
+        izz="0.00255"
+        color = 'orange' />
+
+<link_stl_box name="R_HipS"
+        origin_xyz="0.003 0.0 0.026"
+        collision_rpy = "0 0 0" collision_xyz = "0 0 0"
+        origin_rpy="0 0 0"
+        box_size = "0.0 0.0 0.0" 
+        mass="6.15"
+        ixx="0.00511"
+        iyy="0.00488"
+        izz="0.00627"
+        color = 'orange' />
+
+<link_stl_box name="R_Knee_Upper"
+        origin_xyz="0.019 -0.224 0.0"
+        origin_rpy="0 0 0"
+        collision_rpy = "0 0 0" collision_xyz = "0 -0.15 0"
+        box_size = "0.08 -0.2 0.08"
+        mass="16.50"
+        ixx="0.04803"
+        iyy="0.01514"
+        izz="0.03937"
+        color = 'orange' />
+
+<link_stl_box name="R_Knee_Lower"
+        origin_xyz="-0.012 -0.174 0.003"
+        origin_rpy="0 0 0"
+        collision_rpy = "0 0 0" collision_xyz = "0 -0.15 0"
+        box_size = "0.08 -0.17 0.08"
+        mass="10.00"
+        ixx="0.02039"
+        iyy="0.00726"
+        izz="0.01520"
+        color = 'orange' />
+
+
+
+<link_stl_box name="R_FootR"
+        origin_xyz="0.0 0.029 0.0129"
+        origin_rpy="0 0 0"
+        collision_rpy = "0 0 0" collision_xyz = "0 0 0"
+        box_size = "0.0 0.0 0.0" 
+        mass="1.15"
+        ixx="0.00063"
+        iyy="0.00057"
+        izz="0.00030"
+        color = 'orange' />
+
+
+
+<link_stl_box name="R_FootS"
+        origin_xyz="0.0 0.080 -0.057"
+        origin_rpy="0 0 0"
+        
+        collision_rpy = "0 0 0" collision_xyz = "0 0.1 -0.057"
+        box_size = "0.14 0.075 0.3" 
+
+        mass="11.27"
+        ixx="0.02985"
+        iyy="0.03455"
+        izz="0.00883"
+        color = 'orange' />
+
+
+
+<!-- Left Leg -->
+<link_stl name="L_HipR"
+        origin_xyz="0.0 -0.027 -0.023"
+        origin_rpy="0 0 0"
+
+        mass="2.35"
+        ixx="0.00323"
+        iyy="0.00323"
+        izz="0.00255"
+        color = 'orange' />
+
+
+<link_stl name="L_HipS"
+        origin_xyz="0.003 0.0 -0.026"
+        origin_rpy="0 0 0"
+
+        mass="6.15"
+        ixx="0.00511"
+        iyy="0.00488"
+        izz="0.00627"
+        color = 'orange' />
+
+
+
+<link_stl name="L_Knee_upper"
+        origin_xyz="0.019 -0.224 0.0"
+        origin_rpy="0 0 0"
+        
+        mass="16.50"
+        ixx="0.04803"
+        iyy="0.01514"
+        izz="0.03937"
+        color = 'orange' />
+
+
+
+<link_stl name="L_Knee_Lower"
+        origin_xyz="0.012 -0.174 -0.003"
+        origin_rpy="0 0 0"
+
+        mass="10.00"
+        ixx="0.02039"
+        iyy="0.00726"
+        izz="0.01520"
+        color = 'orange' />
+
+
+
+
+<link_stl name="L_FootR"
+        origin_xyz="0.0 0.029 0.0129"
+        origin_rpy="0 0 0"
+
+        mass="1.15"
+        ixx="0.00063"
+        iyy="0.00057"
+        izz="0.00030"
+        color = 'orange' />
+
+
+<link_stl name="L_FootS"
+        origin_xyz="0.0 0.080 -0.057"
+        origin_rpy="0 0 0"
+
+        mass="11.27"
+        ixx="0.02985"
+        iyy="0.03455"
+        izz="0.00883"
+        color = 'orange' />
+
+
+</robot>

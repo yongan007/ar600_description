@@ -4,7 +4,7 @@
 	<include file="$(find gazebo_ros)/launch/empty_world.launch">
 		<arg name="paused" value="true"/>
 
-	<!-- <arg name="world_name" value="$(find a600_description)/launch/low_gravity.world"/> -->
+	<arg name="world_name" value="$(find a600_description)/launch/low_gravity.world"/>
 	</include>
 
   <!-- Robot model -->
@@ -16,7 +16,7 @@
 			pkg="gazebo_ros" 
 			type="spawn_model" 
 			respawn="false"
-			args="-urdf -model a600 -param robot_description -z 0.83  ">
+			args="-urdf -model a600 -param robot_description -z 1  ">
 	</node>
 
 <!-- -z 0.83 -->

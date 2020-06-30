@@ -2,12 +2,12 @@
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
 
   <!-- Link description -->
-  <xacro:macro name="link_stl" params="name color origin_xyz origin_rpy mass ixx ixy ixz iyy iyz izz">
+  <xacro:macro name="link_stl" params="name color origin_xyz origin_rpy mass ixx iyy izz">
     <link name="${name}">
       <inertial>
         <mass value="${mass}" />
         <origin rpy="${origin_rpy}" xyz="${origin_xyz}" />
-        <inertia ixx="${ixx}" ixy="${ixy}" ixz="${ixz}" iyy="${iyy}" iyz="${iyz}" izz="${izz}" />
+        <inertia ixx="${ixx}" ixy="0.0" ixz="0.0" iyy="${iyy}" iyz="0.0" izz="${izz}" />
       </inertial>
       <collision>
         <origin rpy="0 0 0" xyz="0 0 0" />
@@ -25,24 +25,28 @@
     </link>
   </xacro:macro>
 
-   <!-- Link description -->
-  <xacro:macro name="link_stl_box" params="name color origin_xyz origin_rpy box_size mass ixx ixy ixz iyy iyz izz">
+
+
+   <!-- Link description with colision box-->
+  <xacro:macro name="link_stl_box" params="name color origin_xyz origin_rpy collision_rpy collision_xyz box_size mass ixx iyy izz">
     <link name="${name}">
       <inertial>
         <mass value="${mass}" />
         <origin rpy="${origin_rpy}" xyz="${origin_xyz}" />
-        <inertia ixx="${ixx}" ixy="${ixy}" ixz="${ixz}" iyy="${iyy}" iyz="${iyz}" izz="${izz}" />
+        <inertia ixx="${ixx}" ixy="0.0" ixz="0.0" iyy="${iyy}" iyz="0.0" izz="${izz}" />
       </inertial>
       <collision>
-        <origin rpy="0 0 0" xyz="0 0 0" />
+        <origin rpy="${collision_rpy}" xyz="${collision_xyz}" />
           <geometry>
           <box size="${box_size}"/>
             <!-- <mesh filename="package://a600_description/meshes/${name}.STL" /> -->
           </geometry>
       </collision>
       <visual>
+        <!-- <origin rpy="${collision_rpy}" xyz="${collision_xyz}" /> -->
         <origin rpy="0 0 0" xyz="0 0 0" />
         <geometry>
+            <!-- <box size="${box_size}"/> -->
             <mesh filename="package://a600_description/meshes_light/${name}.STL" />
         </geometry>
           <material name="${color}"/>
@@ -52,14 +56,16 @@
 
 
  <!-- Joint description -->
-  <xacro:macro name="revolute_joint" params="name type axis_xyz origin_rpy origin_xyz parent child limit_e limit_l limit_u limit_v">
-    <joint name="${name}" type="${type}">
+  <xacro:macro name="revolute_joint" params="name type axis_xyz origin_rpy origin_xyz parent child limit_e limit_l limit_u limit_v joint_damping joint_friction ">
+    <joint name="${name}" type="${type}" >
       <axis xyz="${axis_xyz}" />
       <limit effort="${limit_e}" lower="${limit_l}" upper="${limit_u}" velocity="${limit_v}" />
       <origin rpy="${origin_rpy}" xyz="${origin_xyz}" />
       <parent link="${parent}" />
       <child link="${child}" />
+      <dynamics damping="${joint_damping}" friction="${joint_friction}" />
     </joint>
+
     <!-- transmission -->
     <transmission name="trans_${name}">
       <type>transmission_interface/SimpleTransmission</type>
