@@ -26,7 +26,7 @@
     	output="screen"  ns="/a600"   
          	args="joint1_position_controller " />  
 
-<node name="talker" pkg="control" type="control.py" />
+<!-- <node name="talker" pkg="control" type="control.py" /> -->
 
 <!-- calculate, publish and remap joint_states -->
 <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"
