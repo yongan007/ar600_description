@@ -1,5 +1,8 @@
 #!/usr/bin/env python
 # license removed for brevity
+
+#this script communicates with another script callled server_sniffing, it received positions and velocity from robot gui and send the position to joint states in rviz
+
 import rospy
 from std_msgs.msg import Float64
 from numpy import pi 

@@ -2,13 +2,12 @@
 <launch>
     <!-- start gazebo server with empty world -->
 	<include file="$(find gazebo_ros)/launch/empty_world.launch">
+		<arg name="world_name" value="$(find quadruped)/worlds/low_gravity.world"/>
 		<arg name="paused" value="true"/>
 
-	<arg name="world_name" value="$(find a600_description)/launch/low_gravity.world"/>
 	</include>
 
-  <!-- Robot model -->
-	<param name="robot_description" command="$(find xacro)/xacro --inorder '$(find a600_description)/xacro/a600_description_box_colision.xacro'" />
+	<param name="robot_description" command="$(find xacro)/xacro --inorder '$(find a600_description)/xacro/a600_joint_revolute.xacro'" />
 		
 
 	<node 
@@ -16,7 +15,7 @@
 			pkg="gazebo_ros" 
 			type="spawn_model" 
 			respawn="false"
-			args="-urdf -model a600 -param robot_description -z 1  ">
+			args="-urdf -model a600 -param robot_description -z 0.83">
 	</node>
 
 <!-- -z 0.83 -->
@@ -29,17 +28,15 @@
 				  	joint5_position_controller joint6_position_controller
 					joint7_position_controller joint8_position_controller
 					joint9_position_controller joint10_position_controller 
-          joint11_position_controller joint12_position_controller" />  
-
-		  
-	<node pkg="dynamic_reconf_joints" name="listener" type="dynamic_server.py" output="screen" />
-
+          			joint11_position_controller joint12_position_controller"/>  
 	<node name = "rqt_dashboard" pkg = "rqt_gui" type = "rqt_gui" respawn = "false" output = "screen" args = "-s reconfigure"/>
+	
+	<node pkg="dynamic_reconf_joints" name="listener" type="dynamic_server.py" output="screen" />
+	<!-- <node name="talker" pkg="control" type="control_publisher.py"/> -->
 
-	<node name="talker" pkg="control" type="control_publisher.py" />
+
 
 <!-- calculate, publish and remap joint_states -->
-
 <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"
 		respawn="false" output="screen">
 	<remap from="/joint_states" to="/ar601/joint_states"/>
