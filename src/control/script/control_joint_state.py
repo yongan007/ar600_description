@@ -29,7 +29,15 @@ def talker():
     rate = rospy.Rate(10) # 10hz
 
     while not rospy.is_shutdown():
+        s = socket.socket()
 
+        # lab ip
+        # host = "192.168.31.146"
+        # home ip
+        host = '10.91.53.160'
+
+        port = 9999
+        s.connect((host, port))
         rate = rospy.Rate(50)
         while True:
 

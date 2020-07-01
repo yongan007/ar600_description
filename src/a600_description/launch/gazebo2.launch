@@ -2,7 +2,7 @@
 <launch>
     <!-- start gazebo server with empty world -->
 	<include file="$(find gazebo_ros)/launch/empty_world.launch">
-		<arg name="paused" value="true"/>
+		<!-- <arg name="paused" value="true"/> -->
 
 	<!-- <arg name="world_name" value="$(find a600_description)/launch/low_gravity.world"/> -->
 	</include>
@@ -30,8 +30,9 @@
 					joint7_position_controller joint8_position_controller
 					joint9_position_controller joint10_position_controller 
           			joint11_position_controller joint12_position_controller" />  
+<node pkg="dynamic_reconf_joints" name="listener" type="dynamic_server.py" output="screen" />
 
-<node name="talker" pkg="control" type="control_joint_state.py" />
+<!-- <node name="talker" pkg="control" type="control_dynamic.py" /> -->
 <node name = "rqt_dashboard" pkg = "rqt_gui" type = "rqt_gui" respawn = "false" output = "screen" args = "-s reconfigure"/>
 
 <!-- calculate, publish and remap joint_states -->
