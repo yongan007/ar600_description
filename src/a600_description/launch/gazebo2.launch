@@ -2,7 +2,7 @@
 <launch>
     <!-- start gazebo server with empty world -->
 	<include file="$(find gazebo_ros)/launch/empty_world.launch">
-		<!-- <arg name="paused" value="true"/> -->
+		<arg name="paused" value="true"/>
 
 	<!-- <arg name="world_name" value="$(find a600_description)/launch/low_gravity.world"/> -->
 	</include>
