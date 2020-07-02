@@ -16,13 +16,8 @@ from sensor_msgs.msg import JointState
 # from sensor_msgs.msg import Jo
 def talker():
     
-    # rospy.init_node('talker', anonymous=True)
-    rospy.init_node('joint_state_publisher')
-
-    pub_rviz = rospy.Publisher("/joint_states", JointState, queue_size=10)
-    # rospy.init_node('joint_state_publisher')
+    rospy.init_node('talker', anonymous=True)
     rate = rospy.Rate(10) # 10hz
-    hello_str = JointState()
 
     pub1 = rospy.Publisher('/a600/joint1_position_controller/command', Float64, queue_size=10)
     pub2 = rospy.Publisher('/a600/joint2_position_controller/command', Float64, queue_size=10)
@@ -39,27 +34,9 @@ def talker():
     
     rate = rospy.Rate(10) # 10hz
     while not rospy.is_shutdown():
+            
+            data =1.0
 
-        hello_str.header.stamp = rospy.Time.now()
-        # hello_str.position[0] =1
-        pub_rviz.publish(hello_str)
-
-        s = socket.socket()
-        host = '10.91.53.160'
-        # host = "192.168.31.146"
-        port = 9999
-        s.connect((host, port))
-        while True:
-            json_length = struct.unpack(">I", s.recv(4))[0]
-            # now read the JSON data of the given size and JSON decode it
-            json_data = b""  # initiate an empty bytes structure
-            while len(json_data) < json_length:
-                chunk = s.recv(min(4096, json_length - len(json_data)))
-                if not chunk:  
-                    break  
-                json_data += chunk
-            data = json.loads(json_data.decode())["slaves"][1]["position"]
-            print(" I received {} and I am sending it for publishing".format(data))
             position1 = data
             position2 = data
             position3 = data
@@ -84,7 +61,7 @@ def talker():
             
             rate.sleep()
 
-        return pub5
+    # return pub5
 
 if __name__ == '__main__':
     try:
