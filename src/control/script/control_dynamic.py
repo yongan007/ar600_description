@@ -44,7 +44,7 @@ def callback(data):
 
 def talker():
     
-    global positions
+    # global positions
 
     rospy.init_node('talker', anonymous=True)
     rate = rospy.Rate(10) # 10hz

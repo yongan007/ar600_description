@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
-# this file uses dynamic reconf to publish to joint states in gazebo
+# this file uses dynamic reconf to publish to joint states in gazebo. It works with client_new 
+
 
 import rospy
 import socket
@@ -74,10 +75,10 @@ def callback(data):
     
     # joints=['LKnee',0 'RFootF',1 'LHipF'2, 'RKnee'3, 'RHipR'4, 'RHipS'5, 'LFootS'6, 'RHipF'7, 'LHipR'8, 'LHipS'9, 'RFootS'10, 'LFootF'11]
     
-    # positions =[round(msg.value* math.pi/180,2) for msg in msgs]
+    positions =[round(msg.value* math.pi/180,2) for msg in msgs]
     sort_order = [ 4, 5, 7, 3, 1, 10, 8, 9 ,2, 0, 11,6]
 
-    positions =[msg.value for msg in msgs]
+    # positions =[msg.value for msg in msgs]
 
     new_positions =[]
     for i in sort_order:
