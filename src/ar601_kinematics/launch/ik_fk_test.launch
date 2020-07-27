@@ -1,0 +1,7 @@
+<launch>
+    <node pkg="ar601_kinematics" type="ar601_ikinematics_node" name="ar601_ikinematics" />
+    <test test-name="ik_test" pkg="ar601_kinematics" type="ik_test.py" />
+
+    <node pkg="ar601_kinematics" type="ar601_fkinematics_node" name="ar601_fkinematics" />
+    <test test-name="fk_test" pkg="ar601_kinematics" type="fk_test.py" />
+</launch>

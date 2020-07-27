@@ -39,7 +39,7 @@
         <origin rpy="${collision_rpy}" xyz="${collision_xyz}" />
           <geometry>
           <box size="${box_size}"/>
-            <!-- <mesh filename="package://a600_description/meshes/${name}.STL" /> -->
+            <!-- <mesh filename="package://a600_description/meshes_light/${name}.STL" /> -->
           </geometry>
       </collision>
       <visual>
